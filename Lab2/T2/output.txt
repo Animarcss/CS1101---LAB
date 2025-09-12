@@ -1,0 +1,2 @@
+Enter an integer
+square of 4 is 16
