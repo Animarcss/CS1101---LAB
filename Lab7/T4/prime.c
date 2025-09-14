@@ -16,8 +16,12 @@ int isPrime(int n,int printOrNot) {
         return 0; } }
 
 void listPrime(int n) {
+    char toPrint='n';
     for (int i=2;i<=n;i++) {
-        if (isPrime(i,0)==1) printf("%d ",i); } }
+        if (isPrime(i,0)==1) {
+            printf("%d ",i);
+            toPrint='y';} }
+    if (toPrint=='n') printf("No prime numbers."); }
 
 void countPrime(int n) {
     int count=0;
@@ -31,22 +35,26 @@ void listPrimeRange(int a,int b) {
         temp=b;
         b=a;
         a=temp; }
+    char toPrint='n';
     for (int i=a;i<=b;i++) {
-        if (isPrime(i,0)==1) printf("%d ",i); } }
+        if (isPrime(i,0)==1) {
+            printf("%d ",i);
+            toPrint='y'; } }
+    if (toPrint=='n') printf("No prime numbers."); }
 
 int collect(int *n) {
     printf("n = ");
     if (scanf("%d",n)!=1) {                                    // & (ampersand not necessary as n is already a pointer)
         printf("Invalid input. Enter a positive integer.\n");
         return 0; }
-    else return 1; }
+    return 1; }
 
 int collectDuo(int *a,int *b) {
     printf("Enter A and B: ");
     if (scanf("%d %d",a,b)!=2) {                             // same as previous comment ^^^^^^^^
         printf("Invalid input(s). Enter positive integers.\n");
         return 0; }
-    else return 1; }
+    return 1; }
 
 int main() {
     while (1) {
@@ -74,5 +82,5 @@ int main() {
             case 0:
                 break;
             default:
-                printf("Invalid choice.\n"); }
+                printf("\nInvalid choice."); }
         if (choice==0) break; } }
