@@ -5,12 +5,11 @@ void read_array(int a[], int n) {
 	for (int i=0;i<n;i++) scanf("%d",a+i); }
 
 int reverse_array(int a[], int n) {
-	int temp;
 	printf("The reversed array is: ");
-	for (int i=0;i<n/2;i++) {
-		temp=a[i];
-		a[i]=a[n-i-1];
-		a[n-i-1]=temp; } }
+	for (int i=0;i<n/2;i++) {   // Assuming A is a[i]=a, and B is b[i]=b
+		a[i]+=a[n-i-1];         // A is now (a+b)
+		a[n-i-1]=a[i]-a[n-i-1]; // B is now (a+b)-b=a (first swap done!)
+		a[i]-=a[n-i-1]; } }     // A is now (a+b)-a=b (second swap done!)
 
 void print_array(int a[], int n) {
 	for (int i=0;i<n;i++) {
