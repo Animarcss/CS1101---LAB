@@ -1,18 +1,19 @@
 #include <stdio.h>
 
-void read_array(int a[], int n) {
+void read_array(int a[], int n	) {
 	printf("\nEnter the array: ");
 	for (int i=0;i<n;i++) scanf("%d",a+i); }
 
 int reverse_array(int a[], int n) {
-	int temp;
+	int b[n/2];
 	printf("The reversed array is: ");
 	for (int i=0;i<n/2;i++) {
-		temp=a[i];
-		a[i]=a[n-i-1];
-		a[n-i-1]=temp; } }
+		b[i]=a[n-i-1]; }
+	for (int i=0;i<n/2;i++) {
+		a[n-i-1]=a[i];
+		a[i]=b[i]; } }
 
-void print_array(int a[], int n) {
+void print_array(int *a, int n) {
 	for (int i=0;i<n;i++) {
 		printf("%d ",a[i]); } }
 
