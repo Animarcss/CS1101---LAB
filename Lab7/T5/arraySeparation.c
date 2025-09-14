@@ -1,21 +1,21 @@
 #include <stdio.h>
 
-void sepOdd(int *a, int n) {
+void sepOdd(int a[], int n) {
 	printf("\nOdd numbers: ");
 	for (int i=0;i<n;i++) {
 		if (a[i]%2==1) printf("%d ",a[i]); } }
 
-void sepEven(int *a, int n) {
+void sepEven(int a[], int n) {
 	printf("\nEven numbers: ");
 	for (int i=0;i<n;i++) {
 		if (a[i]%2==0) printf("%d ",a[i]); } }
 
-void sepNeg(int *a, int n) {
+void sepNeg(int a[], int n) {
 	printf("\nNegative numbers: ");
 	for (int i=0;i<n;i++) {
 		if (a[i]<0) printf("%d ",a[i]); } }
 
-void sepPos(int *a, int n) {
+void sepPos(int a[], int n) {
 	printf("\nPositive numbers: ");
 	for (int i=0;i<n;i++) {
 		if (a[i]>0) printf("%d ",a[i]); } }
