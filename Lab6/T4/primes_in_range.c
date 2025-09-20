@@ -7,7 +7,7 @@ scanf("%d %d", &A,&B);
 if (A>B) { temp=B; B=A; A=temp; }
 if (A<=1) A=2;
 if (B>1) {
-	printf("\nPrimes numbers in range [A,B] are:\n\n");
+	printf("\nPrimes numbers in range [A,B] are:\n");
 	int isPrime=1;
 	for (int i=A;i<=B;i++) {
 		isPrime=1;
