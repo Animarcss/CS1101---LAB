@@ -1,77 +1,130 @@
 #include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <math.h>
 
+//====================================================
+// 1) basic struct declaration + dot assignment
+//====================================================
+#if 0
+struct point {
+    float xcoord;
+    float ycoord;
+};
 
-// Pick which snippet to compile/run
-
-#define RUN_EXAMPLE 1
-
-
-
-// Common types used across examples
-struct point { float xcoord, ycoord; };
-typedef struct { float x, y; } point_t;
-
-
-typedef struct { int roll; char name[32]; float marks; } stud_t;
-
-
-typedef struct { float real, imag; } complex_t;
-
-
-// ---------------- EXAMPLE 1 ----------------
-#if RUN_EXAMPLE == 1
 int main(void) {
-struct point a, b, c; // definition+declaration demo
-a.xcoord = 1.5f; a.ycoord = 2.5f;
-b.xcoord = -3.0f; b.ycoord = 4.0f;
-c = (struct point){0};
-printf("a=(%.1f,%.1f) b=(%.1f,%.1f) c=(%.1f,%.1f)\n",
-a.xcoord,a.ycoord,b.xcoord,b.ycoord,c.xcoord,c.ycoord);
-return 0;
+    struct point a = {3.2f, 1.5f};
+    printf("%f %f\n", a.xcoord, a.ycoord);
 }
 #endif
 
+//====================================================
+// 2) typedef struct
+//====================================================
+#if 0
+typedef struct {
+    float real, imag;
+} complex;
 
-// ---------------- EXAMPLE 2 ----------------
-#if RUN_EXAMPLE == 2
-// typedef for named & anonymous struct
-typedef struct point point_named; // alias for struct point
-typedef struct { float xcoord, ycoord; } point_anon; // anonymous + typedef
-int main(void) {
-point_named p1 = {2.0f, 1.0f};
-point_anon p2 = {3.0f, 4.0f};
-printf("p1=(%.1f,%.1f) p2=(%.1f,%.1f)\n", p1.xcoord,p1.ycoord,p2.xcoord,p2.ycoord);
-return 0;
+int main(void){
+    complex a = {3,4};
+    complex b = {7,8};
+    printf("a=(%f,%f)\n",a.real,a.imag);
+    printf("b=(%f,%f)\n",b.real,b.imag);
 }
 #endif
 
+//====================================================
+// 3) direct structure copy
+//====================================================
+#if 0
+struct stud {
+    int roll;
+    char name[20];
+    float marks;
+};
 
-// ---------------- EXAMPLE 3 ----------------
-#if RUN_EXAMPLE == 3
-int main(void) {
-struct point a = {2.0f, 1.0f};
-a.xcoord = 3.2f; // member access
-printf("a.xcoord=%.1f a.ycoord=%.1f\n", a.xcoord, a.ycoord);
-return 0;
+int main(void){
+    struct stud a = {23, "Kanika", 92.3};
+    struct stud b;
+    b = a;
+    printf("%s %d %f\n",b.name,b.roll,b.marks);
 }
 #endif
 
+//====================================================
+// 4) array of structures
+//====================================================
+#if 0
+struct rec {
+    char name[50];
+    float cpi;
+};
 
-// ---------------- EXAMPLE 4 ----------------
-#if RUN_EXAMPLE == 4
 int main(void) {
-stud_t s1 = {23, "Kanika", 92.3f};
-stud_t s2 = {47, "Sanjoy", 42.5f};
-stud_t s3; s3 = s2; // struct assignment (deep copy of arrays inside)
-printf("s3: roll=%d name=%s marks=%.1f\n", s3.roll, s3.name, s3.marks);
-return 0;
+    struct rec s[3] = {
+        {"aaa", 7.0},
+        {"bbb", 9.1},
+        {"ccc", 8.0}
+    };
+
+    for(int i=0;i<3;i++)
+        printf("%s %.2f\n",s[i].name, s[i].cpi);
 }
 #endif
 
+//====================================================
+// 5) structure pointer + arrow operator
+//====================================================
+#if 0
+typedef struct {
+    int roll;
+    char name[20];
+    float cpi;
+} student;
 
-// ---------------- EXAMPLE 5 ----------------
-#if RUN_EXAMPLE == 5
+int main(void){
+    student x = {24,"IITPatna",9.0};
+    student *p = &x;
+    printf("%d %s %f\n", p->roll, p->name, p->cpi);
+}
+#endif
+
+//====================================================
+// 6) nested struct
+//====================================================
+#if 0
+typedef struct { float x,y; } point;
+
+typedef struct {
+    point a,b,c;
+    float area;
+} triangle;
+
+int main(void){
+    triangle T = {{0,0},{1,0},{0,1},0};
+    T.area = (T.a.x*(T.b.y - T.c.y)
+            + T.b.x*(T.c.y - T.a.y)
+            + T.c.x*(T.a.y - T.b.y)) / 2.0f;
+    if(T.area < 0) T.area = -T.area;
+    printf("%f\n",T.area);
+}
+#endif
+
+//====================================================
+// 7) union inside struct
+//====================================================
+#if 0
+typedef struct {
+    char name[20];
+    float cpi;
+    char htype;
+    union {
+        char fps[8];
+        int cgs;
+        float mks;
+    } height;
+} stud;
+
+int main(void){
+    stud s = {"AAA", 9.5, 'm', .height.mks=1.80f};
+    printf("%f\n",s.height.mks);
+}
 #endif
