@@ -98,7 +98,7 @@ int main(void) {
 
 
 #if 0
-/* 6) Character I/O — echo and file copy with fgetc/fputc */
+/* 6) Character I/O ï¿½ echo and file copy with fgetc/fputc */
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -121,7 +121,7 @@ int main(void) {
 
 
 #if 0
-/* 7) ftell / fseek demo — in-place overwrite at a byte offset */
+/* 7) ftell / fseek demo ï¿½ in-place overwrite at a byte offset */
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -149,7 +149,7 @@ int main(void) {
 
 
 #if 0
-/* 8) Random access “nth prime” from a fixed-width text file */
+/* 8) Random access ï¿½nth primeï¿½ from a fixed-width text file */
 #include <stdio.h>
 #include <stdlib.h>
 
